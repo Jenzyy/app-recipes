@@ -1,1 +1,8 @@
-<p>list-recipes works!</p>
+<ul>
+  <li *ngFor="let recipe of recipes">
+    {{recipe.strMeal}}
+  </li>
+  <p *ngIf="recipes.length==0">
+    No se encontraron resultados
+  </p>
+</ul>

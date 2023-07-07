@@ -4,16 +4,16 @@ import { ListRecipesComponent } from './components/list-recipes/list-recipes.com
 import { CardRecipeComponent } from './components/card-recipe/card-recipe.component';
 import { FormRecipeComponent } from './components/form-recipe/form-recipe.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ListRecipesComponent,
     CardRecipeComponent,
     FormRecipeComponent,
-    PageHomeComponent
+    PageHomeComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule, FormsModule],
+  exports: [PageHomeComponent],
 })
-export class RecipesModule { }
+export class RecipesModule {}

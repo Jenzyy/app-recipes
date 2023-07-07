@@ -1,1 +1,9 @@
-
+<form #myForm="ngForm" >
+  <div>
+    <input type="text" ngModel name="nombre" placeholder="nombre receta"
+    (input)="searchRecipe()"
+    >
+    <button type="submit">buscar</button>
+  </div>
+</form>
+<pre>{{myForm.value| json}}</pre>
