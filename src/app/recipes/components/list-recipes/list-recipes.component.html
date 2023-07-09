@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let recipe of recipes">
-    {{recipe.strMeal}}
+    <app-card-recipe [meal]="recipe"></app-card-recipe>
   </li>
   <p *ngIf="recipes.length==0">
     No se encontraron resultados

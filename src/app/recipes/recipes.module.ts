@@ -5,6 +5,9 @@ import { CardRecipeComponent } from './components/card-recipe/card-recipe.compon
 import { FormRecipeComponent } from './components/form-recipe/form-recipe.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { RecipesRoutingModule } from './recipes-routing.module';
+import { PageRecipeComponent } from './pages/page-recipe/page-recipe.component';
 
 @NgModule({
   declarations: [
@@ -12,8 +15,9 @@ import { FormsModule } from '@angular/forms';
     CardRecipeComponent,
     FormRecipeComponent,
     PageHomeComponent,
+    PageRecipeComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RecipesRoutingModule],
   exports: [PageHomeComponent],
 })
 export class RecipesModule {}

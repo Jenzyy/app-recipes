@@ -1,0 +1,4 @@
+<p *ngIf="recipe!==null else error">{{recipe|json}}</p>
+<ng-template #error>
+  <p>No se encontro la receta</p>
+</ng-template>
