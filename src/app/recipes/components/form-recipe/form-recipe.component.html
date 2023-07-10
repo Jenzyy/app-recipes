@@ -1,9 +1,16 @@
-<form #myForm="ngForm" >
+<form #myForm="ngForm">
   <div>
-    <input type="text" ngModel name="nombre" placeholder="nombre receta"
-    (input)="searchRecipe()"
-    >
+    <input type="text" ngModel name="nombre" placeholder="nombre receta" (input)="searchRecipe()">
     <button type="submit">buscar</button>
   </div>
 </form>
-<pre>{{myForm.value| json}}</pre>
+<br>
+<span>Categoria:</span>
+<select (change)="searchRecipeByCategory($event)">
+  <option *ngFor="let category of categories" [value]="category?.strCategory">{{category?.strCategory}}</option>
+</select>
+<br>
+<span>Paises:</span>
+<select (change)="searchRecipeByCountry($event)">
+  <option *ngFor="let country of countries" [value]="country?.strArea">{{country?.strArea}}</option>
+</select>

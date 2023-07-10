@@ -56,3 +56,19 @@ export interface Meal {
   strCreativeCommonsConfirmed: any;
   dateModified: any;
 }
+export interface CatergoriesResponse {
+  categories: Category[];
+}
+export interface Category {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+}
+export interface CountryResponse {
+  meals: Country[];
+}
+
+export interface Country {
+  strArea?: string;
+}
