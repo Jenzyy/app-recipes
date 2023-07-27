@@ -10,6 +10,7 @@ import { RecipesRoutingModule } from './recipes-routing.module';
 import { PageRecipeComponent } from './pages/page-recipe/page-recipe.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { FooterComponent } from '../shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     PageRecipeComponent,
     HeaderComponent,
     PaginationComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, FormsModule, RecipesRoutingModule],
   exports: [PageHomeComponent],

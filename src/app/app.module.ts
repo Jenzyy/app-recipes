@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent],

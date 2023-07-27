@@ -8,5 +8,5 @@
     </p>
   </div>
 </section>
-<app-pagination *ngIf="recipes.length!=0" [currentPage]="currentPage" [totalPages]="totalPages"
+<app-pagination *ngIf="recipes.length!=0 && totalPages>1" [currentPage]="currentPage" [totalPages]="totalPages"
   (pageChange)="onPageChange($event)"></app-pagination>
