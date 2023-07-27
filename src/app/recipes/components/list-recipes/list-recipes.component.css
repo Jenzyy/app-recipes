@@ -1,0 +1,13 @@
+:host {
+  transition: 6s ease;
+}
+.recipe {
+  margin-bottom: 1.5rem;
+}
+.recipe__list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.9rem;
+  row-gap: 1.5rem;
+  padding: 0 1.1rem;
+}

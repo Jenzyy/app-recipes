@@ -1,16 +1,26 @@
-<form #myForm="ngForm">
-  <div>
-    <input type="text" ngModel name="nombre" placeholder="nombre receta" (input)="searchRecipe()">
-    <button type="submit">buscar</button>
+<header class="main__header ">
+  <div class="container__search">
+
+    <select name="" id="" class="input__categories" (input)="searchRecipeByCategory($event)">
+      <option value="">All categorias</option>
+      <option *ngFor="let category of categories" [value]="category?. strCategory">{{category?.strCategory}}</option>
+    </select>
+
+    <input type="search" placeholder="Buscar por nombres" class="input__search" ngModel name="nombre"
+      (input)="searchRecipe($event)">
+
+    <button class="btn__search">
+      <img src="./assets/img/li_search.svg" alt="buscar">
+    </button>
   </div>
-</form>
-<br>
-<span>Categoria:</span>
-<select (change)="searchRecipeByCategory($event)">
-  <option *ngFor="let category of categories" [value]="category?.strCategory">{{category?.strCategory}}</option>
-</select>
-<br>
-<span>Paises:</span>
+  <div class="options">
+    <input type="button" class="input__btn-1" value="share your recipe">
+    <input type="button" class="input__btn-2" value="share your recipe">
+  </div>
+</header>
+
+<!-- <span>Paises:</span>
 <select (change)="searchRecipeByCountry($event)">
+  <option value="">--- ninguno</option>
   <option *ngFor="let country of countries" [value]="country?.strArea">{{country?.strArea}}</option>
-</select>
+</select> -->

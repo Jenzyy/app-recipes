@@ -22,14 +22,40 @@ import {
   providedIn: 'root',
 })
 export class RecipesService {
+  private _pagedRecipes: Meal[] = [];
+
   private _recipes: Meal[] = [];
   private cacheCategories: Category[] = [];
   private cacheCountry: Country[] = [];
+  //Pagination
+  private _currentPage = 1;
+  private _pageSize = 10;
+  private _totalPages = 0;
+  private _totalProducts = 0;
+
   get recipes() {
     return [...this._recipes];
   }
-  constructor(private http: HttpClient) {}
+  get pagedRecipes() {
+    return [...this._pagedRecipes];
+  }
 
+  get currentPage() {
+    return this._currentPage;
+  }
+
+  get pageSize() {
+    return this._pageSize;
+  }
+
+  get totalPage() {
+    return this._totalPages;
+  }
+  get totalProducts() {
+    return this._totalProducts;
+  }
+
+  constructor(private http: HttpClient) {}
   getRecipeById(id: string): Observable<Meal> {
     return this.http
       .get<MealResponse>(
@@ -52,6 +78,7 @@ export class RecipesService {
         next: (value) => {
           console.log(value.meals);
           this._recipes = value.meals ?? [];
+          this.getDataPagination();
         },
         error: (err) => {
           console.error(err);
@@ -73,13 +100,14 @@ export class RecipesService {
         next: (value) => {
           console.log(value.meals);
           this._recipes = value.meals ?? [];
+          this.getDataPagination();
         },
         error: (err) => {
           console.error(err);
         },
       });
   }
-  
+
   searchRecipesByCountry(country: string) {
     this.http
       .get<MealResponse>(
@@ -95,6 +123,7 @@ export class RecipesService {
         next: (value) => {
           console.log(value.meals);
           this._recipes = value.meals ?? [];
+          this.getDataPagination();
         },
         error: (err) => {
           console.error(err);
@@ -111,7 +140,6 @@ export class RecipesService {
       )
       .pipe(
         map(({ categories }) => {
-          console.log('solicitando categories...', categories);
           this.cacheCategories = categories;
           return categories;
         })
@@ -127,10 +155,42 @@ export class RecipesService {
       )
       .pipe(
         map(({ meals: countries }) => {
-          console.log('solicitando paises...', countries);
           this.cacheCountry = countries;
           return countries;
         })
       );
+  }
+
+  getDataPagination() {
+    this.calculateTotalPages();
+    this.calculateTotalProducts();
+    this.updatePagedProducts();
+  }
+
+  calculateTotalPages() {
+    this._totalPages = Math.ceil(this._recipes.length / this.pageSize);
+  }
+
+  calculateTotalProducts() {
+    this._totalProducts = this._recipes.length;
+  }
+
+  updatePagedProducts() {
+    if (this._currentPage > this.totalPage) {
+      this._currentPage = 1;
+    }
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this._pagedRecipes = this._recipes.slice(startIndex, endIndex);
+  }
+
+  onPageChange(page: number) {
+    this._currentPage = page;
+    this.updatePagedProducts();
+  }
+
+  setPageSize(count: number) {
+    this._pageSize = count;
+    this.getDataPagination();
   }
 }

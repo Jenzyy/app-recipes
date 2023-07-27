@@ -1,8 +1,12 @@
-<ul>
-  <li *ngFor="let recipe of recipes">
-    <app-card-recipe [meal]="recipe"></app-card-recipe>
-  </li>
-  <p *ngIf="recipes.length==0">
-    No se encontraron resultados
-  </p>
-</ul>
+<section class="recipe container ">
+  <div class="recipe__list ">
+    <ng-container *ngFor="let recipe of recipes">
+      <app-card-recipe [meal]="recipe"></app-card-recipe>
+    </ng-container>
+    <p *ngIf="recipes.length==0" class="recipe__card">
+      No se encontraron resultados
+    </p>
+  </div>
+</section>
+<app-pagination *ngIf="recipes.length!=0" [currentPage]="currentPage" [totalPages]="totalPages"
+  (pageChange)="onPageChange($event)"></app-pagination>

@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~animate.css/animate.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.recipe__list,
+.main__header,
+.footer,
+.pagination {
+  padding: 0 0.5rem;
+}
+/* *************** TABLET SMAL ****************** */
+

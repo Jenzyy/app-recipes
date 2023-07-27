@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { PageRecipeComponent } from './pages/page-recipe/page-recipe.component';
+import { HeaderComponent } from '../shared/header/header.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { PageRecipeComponent } from './pages/page-recipe/page-recipe.component';
     FormRecipeComponent,
     PageHomeComponent,
     PageRecipeComponent,
+    HeaderComponent,
+    PaginationComponent,
   ],
   imports: [CommonModule, FormsModule, RecipesRoutingModule],
   exports: [PageHomeComponent],

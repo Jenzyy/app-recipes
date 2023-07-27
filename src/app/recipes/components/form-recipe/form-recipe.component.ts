@@ -29,20 +29,31 @@ export class FormRecipeComponent implements OnInit {
       },
       error: () => {},
     });
+    this.getRecipesDefault();
+  }
+  getRecipesDefault() {
+    //recipe initial
+    this.recipeService.searchRecipesByDishName('a');
   }
   searchRecipeByCategory(event: Event) {
     console.log(event);
     const category = (<HTMLInputElement>event?.target).value;
+    if (category == '' || category == null) {
+      this.getRecipesDefault();
+      return;
+    }
     this.recipeService.searchRecipesByCategories(category);
   }
   searchRecipeByCountry(event: Event) {
     const country = (<HTMLInputElement>event?.target).value;
+    if (country == '' || country == null) {
+      this.getRecipesDefault();
+      return;
+    }
     this.recipeService.searchRecipesByCountry(country);
   }
-
-  searchRecipe() {
-    console.log('change');
-    const nombre = this.form.value.nombre;
+  searchRecipe(event: any) {
+    const nombre = event.target.value;
     this.recipeService.searchRecipesByDishName(nombre);
   }
 }
