@@ -15,6 +15,9 @@ export class ListRecipesComponent implements OnInit {
     { width: 0, pageSize: 3 },
   ];
 
+  constructor(private serviceRecipes: RecipesService) {
+    this.setPageSize();
+  }
   get recipes() {
     return this.serviceRecipes.pagedRecipes;
   }
@@ -25,9 +28,6 @@ export class ListRecipesComponent implements OnInit {
     return this.serviceRecipes.totalPage;
   }
 
-  constructor(private serviceRecipes: RecipesService) {
-    this.setPageSize();
-  }
   ngOnInit(): void {}
 
   onPageChange(page: number) {
@@ -42,5 +42,8 @@ export class ListRecipesComponent implements OnInit {
       this.pageSizeOptions.find((option) => width >= option.width)?.pageSize ||
       3;
     this.serviceRecipes.setPageSize(pageSize);
+  }
+  trackCardById(index: number, card: any): number {
+    return index; // Suponiendo que tus cards tienen una propiedad "id" única
   }
 }

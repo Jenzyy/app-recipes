@@ -10,4 +10,14 @@
   column-gap: 0.9rem;
   row-gap: 1.5rem;
   padding: 0 1.1rem;
+  transition: 1s ease;
+}
+.msgerror{
+  margin: auto;
+  color: rgb(160, 157, 157);
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin-top: 10rem;
+  margin-bottom: 20rem;
+  
 }

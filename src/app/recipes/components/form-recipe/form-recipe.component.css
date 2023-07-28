@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 5.5rem;
+  margin-bottom: 2rem;
   row-gap: 0.5rem;
 }
 .container__search {
@@ -34,7 +34,7 @@
 }
 
 .btn__search {
-  background-color: #509e2f;
+  background-color:  #f6784c;
   padding: 1rem;
   border: none;
   border-radius: 0 0.625rem 0.625rem 0;
@@ -67,17 +67,17 @@
 }
 @media screen and (min-width: 864px) {
   .main__header {
+
     flex-direction: row;
     margin-bottom: 1rem;
-    gap: 2%;
+   
   }
   .container__search {
-    flex-grow: 2;
+    flex-grow: 1;
   }
-  .options {
-    flex-basis: 20%;
-  }
+
   .container__search {
-    grid-template-columns: 30% 55% 15%;
+    grid-template-columns: 20% 70% 10%;
+    padding-right: .5rem;
   }
 }

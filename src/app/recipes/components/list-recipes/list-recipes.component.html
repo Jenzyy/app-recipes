@@ -1,11 +1,12 @@
 <section class="recipe container ">
   <div class="recipe__list ">
-    <ng-container *ngFor="let recipe of recipes">
+    <ng-container *ngFor="let recipe of recipes;trackBy: trackCardById">
       <app-card-recipe [meal]="recipe"></app-card-recipe>
     </ng-container>
-    <p *ngIf="recipes.length==0" class="recipe__card">
+    <h2 *ngIf="recipes.length==0" class="msgerror">
       No se encontraron resultados
-    </p>
+    </h2>
+
   </div>
 </section>
 <app-pagination *ngIf="recipes.length!=0 && totalPages>1" [currentPage]="currentPage" [totalPages]="totalPages"

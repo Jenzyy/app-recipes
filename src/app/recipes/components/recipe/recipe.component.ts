@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Meal } from '../../interfaces/recipes.interface';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,8 +8,9 @@ import { RecipesService } from '../../services/Recipes.service';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css'],
 })
-export class RecipeComponent {
+export class RecipeComponent implements OnInit {
   recipe!: Meal | null;
+
   ingredientsWithMeasures: { ingredient: string; measure: string }[] = [];
   constructor(
     private route: ActivatedRoute,
@@ -31,19 +32,18 @@ export class RecipeComponent {
           ).length;
 
           for (let i = 1; i <= count; i++) {
-            const ingredient = recipe[`strIngredient${i}` as keyof Meal].trim();
-            const measure = recipe[`strMeasure${i}` as keyof Meal].trim();
+            const ingredient =
+              recipe[`strIngredient${i}` as keyof Meal]?.trim();
+            const measure = recipe[`strMeasure${i}` as keyof Meal]?.trim();
             if (ingredient) {
               this.ingredientsWithMeasures.push({ ingredient, measure });
             }
           }
         },
         error: (error) => {
-          console.log('aaaa');
+          this.router.navigate(['/recipes']);
         },
       });
     });
   }
-
-
 }
