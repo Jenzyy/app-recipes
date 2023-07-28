@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
 import { CardRecipeComponent } from './components/card-recipe/card-recipe.component';
 import { FormRecipeComponent } from './components/form-recipe/form-recipe.component';
@@ -11,6 +12,8 @@ import { PageRecipeComponent } from './pages/page-recipe/page-recipe.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { FooterComponent } from '../shared/footer/footer.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
+
 
 @NgModule({
   declarations: [
@@ -22,8 +25,15 @@ import { FooterComponent } from '../shared/footer/footer.component';
     HeaderComponent,
     PaginationComponent,
     FooterComponent,
+    RecipeComponent,
+
   ],
-  imports: [CommonModule, FormsModule, RecipesRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RecipesRoutingModule,
+  
+  ],
   exports: [PageHomeComponent],
 })
 export class RecipesModule {}

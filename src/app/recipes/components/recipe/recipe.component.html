@@ -1,0 +1,39 @@
+<main class="main container">
+  <h1 class="app-title">    {{recipe?.strMeal}} </h1>
+  <div class="recipe__container">
+    <div class="recipe__view-container">
+      <img [src]="recipe?.strMealThumb" alt="" class="recipe__img">
+      <div class="recipe__card-container">
+        <h2 class="recipe__name">
+          {{recipe?.strMeal}}
+        </h2>
+        <span class="recipes__tags">
+          {{recipe?.strCategory}}
+        </span>
+      </div>
+    </div>
+
+    <div class="recipe__description-container">
+      <div class="recipe__ingredients-container">
+        <h2 class="recipe__ingredients-title">
+          Ingredientes:
+        </h2>
+        <ul class="recipe__ingredients-list">
+          <li *ngFor="let item of ingredientsWithMeasures" class="recipe__ingredient">
+            {{item.ingredient}} - {{item.measure}}
+        </ul>
+      </div>
+      <div class="recipe__preparation-container">
+        <h2 class="recipe__preparation-title">
+          Preparation :
+        </h2>
+        <p class="recipe__preparation-text">
+          {{recipe?.strInstructions}}
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+</main>
