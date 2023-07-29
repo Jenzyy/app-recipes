@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 import {
   Category,
   CatergoriesResponse,
@@ -58,25 +59,21 @@ export class RecipesService {
   constructor(private http: HttpClient) {}
   getRecipeById(id: string): Observable<Meal> {
     return this.http
-      .get<MealResponse>(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
-      )
+      .get<MealResponse>(`${environment.apiUrl}lookup.php?i=${id}`)
       .pipe(map(({ meals: [recipe] }) => recipe));
   }
   searchRecipesByDishName(name: string) {
     this.http
       .get<MealResponse>(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`
+        `${environment.apiUrl}search.php?s=${name}`
       )
       .pipe(
         catchError((error) => {
-          console.error(error);
           return EMPTY;
         })
       )
       .subscribe({
         next: (value) => {
-          console.log(value.meals);
           this._recipes = value.meals ?? [];
           this.getDataPagination();
         },
@@ -88,7 +85,7 @@ export class RecipesService {
   searchRecipesByCategories(category: string) {
     this.http
       .get<MealResponse>(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+        `${environment.apiUrl}filter.php?c=${category}`
       )
       .pipe(
         catchError((error) => {
@@ -98,7 +95,7 @@ export class RecipesService {
       )
       .subscribe({
         next: (value) => {
-          console.log(value.meals);
+
           this._recipes = value.meals ?? [];
           this.getDataPagination();
         },
@@ -121,7 +118,6 @@ export class RecipesService {
       )
       .subscribe({
         next: (value) => {
-          console.log(value.meals);
           this._recipes = value.meals ?? [];
           this.getDataPagination();
         },
@@ -136,7 +132,7 @@ export class RecipesService {
     }
     return this.http
       .get<CatergoriesResponse>(
-        `https://www.themealdb.com/api/json/v1/1/categories.php`
+        `${environment.apiUrl}categories.php`
       )
       .pipe(
         map(({ categories }) => {
@@ -151,7 +147,7 @@ export class RecipesService {
     }
     return this.http
       .get<CountryResponse>(
-        `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
+        `${environment.apiUrl}list.php?a=list`
       )
       .pipe(
         map(({ meals: countries }) => {

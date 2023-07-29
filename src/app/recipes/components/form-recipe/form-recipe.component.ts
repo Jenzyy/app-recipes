@@ -36,7 +36,6 @@ export class FormRecipeComponent implements OnInit {
     this.recipeService.searchRecipesByDishName('a');
   }
   searchRecipeByCategory(event: Event) {
-    console.log(event);
     const category = (<HTMLInputElement>event?.target).value;
     if (category == '' || category == null) {
       this.getRecipesDefault();

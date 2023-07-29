@@ -36,7 +36,6 @@ export class ListRecipesComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   setPageSize() {
-    console.log('a');
     const width = window.innerWidth;
     const pageSize =
       this.pageSizeOptions.find((option) => width >= option.width)?.pageSize ||

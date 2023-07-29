@@ -20,6 +20,7 @@ export class RecipeComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
+      console.log(params)
       const id = params['id'];
       if (!id) {
         this.router.navigate(['/']);
@@ -41,7 +42,7 @@ export class RecipeComponent implements OnInit {
           }
         },
         error: (error) => {
-          this.router.navigate(['/recipes']);
+          this.router.navigate(['/']);
         },
       });
     });
